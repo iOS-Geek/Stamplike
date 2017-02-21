@@ -67,7 +67,7 @@
 -(void)viewDidAppear:(BOOL)animated{
     
     viewInfo = [[NSMutableDictionary alloc]initWithObjectsAndKeys:[NSNumber numberWithFloat:self.view.frame.size.width],@"viewWidth",[NSNumber numberWithFloat:self.view.frame.size.height],@"viewHeight", nil];
-
+    
 }
 
 #pragma mark #################################
@@ -175,10 +175,98 @@
         [cell.photoView setImage:[UIImage imageNamed:@"no-image.png"]];
     }
     [cell.photoView setTag:indexPath.row];
-//    cell.layer.shadowOpacity = 0.5;
-//    cell.layer.shadowRadius = 5.0;
-//     cell.layer.shadowOffset = CGSizeMake(0, 10);
+    //    cell.layer.shadowOpacity = 0.5;
+    //    cell.layer.shadowRadius = 5.0;
+    //     cell.layer.shadowOffset = CGSizeMake(0, 10);
     return cell;
+}
+
+
+#pragma mark #################################
+#pragma mark CHTCollectionViewDelegateWaterfallLayout Delegtae Methods
+#pragma mark #################################
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
+    CGFloat height = [[self.cellHeights objectAtIndex:indexPath.row] floatValue];
+    CGSize size = CGSizeMake(cellWidth, height);
+    return size;
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    [self showAlertForPickingPicture];
+    //save selected beard image
+    selectedBeardImage = [UIImage imageNamed:[imagesTitleArray objectAtIndex:indexPath.row]];
+    selectedRatio = [[aspectRatioArray objectAtIndex:indexPath.row] floatValue ];
+    
+}
+
+
+#pragma mark #################################
+#pragma  Camera 'Delegate Methods'
+#pragma mark #################################
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    //save image picked
+    chosenImage = [info objectForKey:UIImagePickerControllerOriginalImage];
+    
+    //dismiss camera and open editable screen
+    [picker dismissViewControllerAnimated:YES completion:^{
+        [self performSegueWithIdentifier:@"addBeardSegue" sender:self];
+    }];
+}
+
+//Alert for chossing Camera or Library
+-(void)showAlertForPickingPicture{
+    UIAlertController *pickOptionAlert = [UIAlertController alertControllerWithTitle:@"Select where to get photo from" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    //Camera action
+    UIAlertAction *takePhoto = [UIAlertAction actionWithTitle:@"Take Photo" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        picker.delegate = self;
+        picker.allowsEditing = NO;
+        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        
+        [self presentViewController:picker animated:YES completion:NULL];
+        
+    }];
+    [pickOptionAlert addAction:takePhoto];
+    
+    //Photo library action
+    UIAlertAction *photoLibrary = [UIAlertAction actionWithTitle:@"Photo Library" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        picker.delegate = self;
+        picker.allowsEditing = NO;
+        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        
+        [self presentViewController:picker animated:YES completion:NULL];
+        
+    }];
+    [pickOptionAlert addAction:photoLibrary];
+    
+    //Cancel Picking Image
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    
+    [pickOptionAlert addAction:cancel];
+    
+    //show alert
+    [self presentViewController:pickOptionAlert animated:true completion:nil];
+}
+
+#pragma ################################
+#pragma  'Segue methods'
+#pragma ################################
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    EditPictureScreen *vc = (EditPictureScreen*)segue.destinationViewController;
+    vc.recievedImage = chosenImage;
+    vc.recievedBeardImage = selectedBeardImage;
+    vc.imageRatio = selectedRatio;
+    vc.viewInformation = viewInfo;
 }
 
 -(IBAction)unwindToMainScreen :(UIStoryboardSegue*)segue{}

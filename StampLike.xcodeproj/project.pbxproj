@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D61ABBA21E5C6D55006AECCC /* CHTCollectionViewWaterfallLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = D61ABBA11E5C6D55006AECCC /* CHTCollectionViewWaterfallLayout.m */; };
+		D61ABBA51E5C6D8B006AECCC /* ItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D61ABBA41E5C6D8B006AECCC /* ItemCollectionViewCell.m */; };
 		D6857B5D1DAFB3AC00663DC4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D6857B5C1DAFB3AC00663DC4 /* main.m */; };
 		D6857B601DAFB3AC00663DC4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D6857B5F1DAFB3AC00663DC4 /* AppDelegate.m */; };
 		D6857B661DAFB3AC00663DC4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6857B641DAFB3AC00663DC4 /* Main.storyboard */; };
@@ -16,6 +18,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D61ABBA01E5C6D55006AECCC /* CHTCollectionViewWaterfallLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHTCollectionViewWaterfallLayout.h; sourceTree = "<group>"; };
+		D61ABBA11E5C6D55006AECCC /* CHTCollectionViewWaterfallLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHTCollectionViewWaterfallLayout.m; sourceTree = "<group>"; };
+		D61ABBA31E5C6D8B006AECCC /* ItemCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemCollectionViewCell.h; sourceTree = "<group>"; };
+		D61ABBA41E5C6D8B006AECCC /* ItemCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemCollectionViewCell.m; sourceTree = "<group>"; };
 		D6857B581DAFB3AC00663DC4 /* StampLike.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StampLike.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6857B5C1DAFB3AC00663DC4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D6857B5E1DAFB3AC00663DC4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -68,6 +74,10 @@
 				D6857B5F1DAFB3AC00663DC4 /* AppDelegate.m */,
 				D6857B751DAFF07300663DC4 /* MainBeardCollectionScreen.h */,
 				D6857B761DAFF07300663DC4 /* MainBeardCollectionScreen.m */,
+				D61ABBA31E5C6D8B006AECCC /* ItemCollectionViewCell.h */,
+				D61ABBA41E5C6D8B006AECCC /* ItemCollectionViewCell.m */,
+				D61ABBA01E5C6D55006AECCC /* CHTCollectionViewWaterfallLayout.h */,
+				D61ABBA11E5C6D55006AECCC /* CHTCollectionViewWaterfallLayout.m */,
 				D6857B641DAFB3AC00663DC4 /* Main.storyboard */,
 				D6857B671DAFB3AC00663DC4 /* Assets.xcassets */,
 				D6857B691DAFB3AC00663DC4 /* LaunchScreen.storyboard */,
@@ -157,9 +167,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D61ABBA51E5C6D8B006AECCC /* ItemCollectionViewCell.m in Sources */,
 				D6857B601DAFB3AC00663DC4 /* AppDelegate.m in Sources */,
 				D6857B5D1DAFB3AC00663DC4 /* main.m in Sources */,
 				D6857B771DAFF07300663DC4 /* MainBeardCollectionScreen.m in Sources */,
+				D61ABBA21E5C6D55006AECCC /* CHTCollectionViewWaterfallLayout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

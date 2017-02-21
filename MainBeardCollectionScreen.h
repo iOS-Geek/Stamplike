@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "EditPictureScreen.h"
+//#import "EditPictureScreen.h"
 #import "CHTCollectionViewWaterfallLayout.h"
 #import "ItemCollectionViewCell.h"
 #define ITEM_CELL_IDENTIFIER @"itemCell"
