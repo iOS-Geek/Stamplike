@@ -1,10 +1,6 @@
-//
-//  ItemCollectionViewCell.m
-//  StampLike
-//
-//  Created by  iOS Developer on 13/10/16.
-//  Copyright © 2016 Prabh Kiran Kaur. All rights reserved.
-//
+
+
+
 
 #import "ItemCollectionViewCell.h"
 
@@ -29,7 +25,7 @@
 - (void)dealloc {
     [_photoView removeFromSuperview];
     _photoView = nil;
-
+    
     
     [super dealloc];
 }
@@ -37,9 +33,7 @@
 
 - (id)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        self.contentView.layer.cornerRadius = 20;
-        self.contentView.clipsToBounds = true;
-        self.contentView.backgroundColor = [UIColor whiteColor];
+    
         [self.contentView addSubview:self.photoView];
     }
     return self;
